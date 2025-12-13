@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import api from "../Services/api";
 
 
 const Register = () => {
@@ -10,9 +13,25 @@ const Register = () => {
     const [ password, setPassword] = useState('');
     const [ error, setError] = useState(null);
     const [ showPassword, setShowPassword] = useState(false)
+    
+    const handleSubmit = async(e) => {
+       e.preventDefault(); 
+       try {
+        const response = await api.post("/auth/register", {name, email, password});
+        toast.success(response.data.message);
+        setError(null);
+        navigate("/Login");
+       } catch (error) {
+        setError(error.response.data.message);
+        toast.error(error.response.data.message)
+       }
+       setName("");
+       setEmail("");
+       setPassword("");
+    };
     return (
         <div className = 'container mx-auto mt-8'>
-            <form className = 'max-w-md mx-auto bg-amber-300 p-4'>
+            <form className = 'max-w-md mx-auto bg-amber-300 p-4'onSubmit={handleSubmit}>
                 <h2 className = 'text-2xl mb-4 font-bold font-sans'>Register</h2>
                 {error && (
                     <div className = "bg-red-100 p-3 text-red-600 rounded">
@@ -71,10 +90,10 @@ const Register = () => {
                 </p>
                 <button 
                     type="submit"
-                    onClick={()=> setShowPassword(!showPassword)}
                     className="w-full bg-pink-400 font-bold rounded font-serif text-amber-200 p-2">
                        Register
                     </button>
+                    <div className = " bg-red-100 p-2 mb-4 text-red-300">Already have an account <a href = "/login">Login</a></div>
             </form>
         </div>
     );
