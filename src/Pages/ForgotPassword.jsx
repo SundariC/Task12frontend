@@ -14,20 +14,17 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await api.post(
-        "/auth/login",
-        { email, password }
+        "/auth/forgot-password",
+        { email }
       );
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", response.data.role);
       toast.success(response.data.message);
       setError(null);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       setError(error.response.data.message);
       toast.error(error.response.data.message);
     }
     setEmail("");
-    setPassword("");
   };
   
     return (
