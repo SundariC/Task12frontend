@@ -4,19 +4,15 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Services/api";
 
-
 const ForgotPassword = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
 
-      const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post(
-        "/auth/forgot-password",
-        { email }
-      );
+      const response = await api.post("/auth/forgot-password", { email });
       toast.success(response.data.message);
       setError(null);
       navigate("/login");
@@ -26,9 +22,15 @@ const ForgotPassword = () => {
     }
     setEmail("");
   };
-  
-    return (
-        <div className="container mx-auto mt-8">
+
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+      }}
+    >
       <form
         className="max-w-md mx-auto bg-blue-100 p-4"
         onSubmit={handleSubmit}
