@@ -30,7 +30,7 @@ const ForgotPassword = () => {
     return (
         <div className="container mx-auto mt-8">
       <form
-        className="max-w-md mx-auto bg-amber-300 p-4"
+        className="max-w-md mx-auto bg-blue-100 p-4"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl mb-4 font-bold font-sans">Forgot Password</h2>
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
             Email
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-blue-300 rounded outline-blue-600"
             type="email"
             id="email"
             name="email"
@@ -53,11 +53,11 @@ const ForgotPassword = () => {
         </p>
         <button
           type="submit"
-          className="w-full bg-pink-400 font-bold rounded font-serif text-amber-200 p-2"
+          className="w-full mt-3 bg-blue-400 font-bold rounded font-serif text-amber-200 p-2"
         >
           Submit
         </button>
-        <div className="bg-red-100 p-2 mb-4 text-red-300">
+        <div className=" p-2 mb-4 text-red-600">
           Password Remembered? <a href="/Login">Login</a>
         </div>
       </form>

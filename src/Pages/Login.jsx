@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,10 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post(
-        "/auth/login",
-        { email, password }
-      );
+      const response = await api.post("/auth/login", { email, password });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       toast.success(response.data.message);
@@ -31,10 +29,7 @@ const Login = () => {
   };
   return (
     <div className="container mx-auto mt-8">
-      <form
-        className="max-w-md mx-auto bg-amber-300 p-4"
-        onSubmit={handleSubmit}
-      >
+      <form className="max-w-md mx-auto bg-blue-100 p-4" onSubmit={handleSubmit}>
         <h2 className="text-2xl mb-4 font-bold font-sans">Login</h2>
         {error && (
           <div className="bg-red-100 p-3 text-red-600 rounded">{error}</div>
@@ -44,7 +39,7 @@ const Login = () => {
             Email
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-blue-300 rounded outline-blue-600"
             type="email"
             id="email"
             name="email"
@@ -58,7 +53,7 @@ const Login = () => {
             Password
           </label>
           <input
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-blue-300 rounded outline-blue-600"
             type={showPassword ? "text" : "password"}
             id="password"
             name="password"
@@ -66,31 +61,29 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your Password"
           />
-          <br />
-          <br />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="p-2 my-3 bg-blue-500 text-amber-200"
+            className=""
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </p>
         <button
           type="button"
           onClick={() => navigate("/forgot-password")}
-          className="bg-red-100 p-2 mb-4 text-red-300"
+          className=" p-2 mb-4 text-blue-700"
         >
           Forgot Password
         </button>
         <button
           type="submit"
-          className="w-full bg-pink-400 font-bold rounded font-serif text-amber-200 p-2"
+          className="w-full bg-blue-400 font-bold rounded font-serif text-amber-200 p-2"
         >
           Login
         </button>
-        <div className="bg-red-100 p-2 mb-4 text-red-300">
-          Don't have an account <a href="/register">Register</a>
+        <div className=" p-2 mb-4 text-red-600">
+          Don't have an account? <a href="/register">Register</a>
         </div>
       </form>
     </div>

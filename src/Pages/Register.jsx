@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
@@ -31,10 +31,10 @@ const Register = () => {
     };
     return (
         <div className = 'container mx-auto mt-8'>
-            <form className = 'max-w-md mx-auto bg-amber-300 p-4'onSubmit={handleSubmit}>
+            <form className = 'max-w-md mx-auto bg-blue-100 p-4 shadow-blue-600'onSubmit={handleSubmit}>
                 <h2 className = 'text-2xl mb-4 font-bold font-sans'>Register</h2>
                 {error && (
-                    <div className = "bg-red-100 p-3 text-red-600 rounded">
+                    <div className = " p-3 text-red-600 rounded">
                         {error}
                     </div>
                 )}
@@ -43,7 +43,7 @@ const Register = () => {
                         Name
                     </label>
                     <input 
-                    className = "w-full p-2 border border-gray-300 rounded"
+                    className = "w-full p-2 border border-blue-300 rounded outline-blue-600"
                     type="text"
                     id="name"
                     name="name"
@@ -57,7 +57,7 @@ const Register = () => {
                         Email
                     </label>
                     <input 
-                    className = "w-full p-2 border border-gray-300 rounded"
+                    className = "w-full p-2 border border-blue-300 rounded outline-blue-600"
                     type="email"
                     id="email"
                     name="email"
@@ -71,7 +71,7 @@ const Register = () => {
                         Password
                     </label>
                     <input 
-                    className = "w-full p-2 border border-gray-300 rounded"
+                    className = "w-full p-2 border border-gray-300 rounded outline-blue-600"
                     type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
@@ -79,21 +79,19 @@ const Register = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your Password"
                     />
-                    <br />
-                    <br />
                     <button 
                     type="button"
                     onClick={()=> setShowPassword(!showPassword)}
-                    className="p-2 my-3 bg-blue-500 text-amber-200">
-                        {showPassword ? "Hide" : "Show"}
+                    className="">
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </button>
                 </p>
                 <button 
                     type="submit"
-                    className="w-full bg-pink-400 font-bold rounded font-serif text-amber-200 p-2">
+                    className="w-full bg-blue-400 font-bold rounded font-serif text-amber-200 p-2">
                        Register
                     </button>
-                    <div className = " bg-red-100 p-2 mb-4 text-red-300">Already have an account <a href = "/login">Login</a></div>
+                    <div className = "p-2 mb-4 text-red-700">Already have an account? <a href = "/login">Login</a></div>
             </form>
         </div>
     );
