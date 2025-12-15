@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -28,7 +29,13 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+      }}
+    >
       <form
         className="max-w-md mx-auto bg-white p-8 shadow-lg"
         onSubmit={handleSubmit}
@@ -59,7 +66,7 @@ const ResetPassword = () => {
             onClick={() => setShowPassword(!showPassword)}
             className="bg-red-100 p-2 mb-4 text-red-600 rounded font-serif"
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </p>
         <button

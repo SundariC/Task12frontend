@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import api from "../Services/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +32,13 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+     <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+      }}
+    >
       <form
         className="max-w-md mx-auto bg-white p-8 shadow-lg"
         onSubmit={handleSubmit}
@@ -76,13 +83,13 @@ const Login = () => {
             onClick={() => setShowPassword(!showPassword)}
             className="bg-red-100 p-2 mb-4 text-red-600 rounded font-serif"
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </p>
         <button
           type="button"
           onClick={() => navigate("/forgot-password")}
-          className="bg-red-100 p-2 mb-4 text-red-600 rounded font-serif"
+          className="p-2 mb-4 text-blue-600 rounded font-serif"
         >
           Forgot Password
         </button>
@@ -92,7 +99,7 @@ const Login = () => {
         >
           Login
         </button>
-        <div className="bg-red-100 p-2 mb-4 text-red-600 font-bold font-serif rounded mt-4">
+        <div className=" p-2 mb-4 text-red-600 font-bold font-serif rounded mt-4">
           Don't have an account? <a href="/register">Register</a>
         </div>
       </form>

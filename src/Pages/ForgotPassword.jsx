@@ -25,7 +25,13 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
+      }}
+    >
       <form
         className="max-w-md mx-auto bg-white p-8 shadow-lg"
         onSubmit={handleSubmit}
@@ -59,7 +65,7 @@ const ForgotPassword = () => {
         >
          Submit
         </button>
-        <div className="bg-red-100 p-2 mb-4 text-red-600 font-bold font-serif rounded mt-4">
+        <div className=" p-2 mb-4 text-red-600 font-bold font-serif rounded mt-4">
          Password Remembered ? <a href="/login">login</a>
         </div>
       </form>
