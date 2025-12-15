@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Pages/Register";
-import Login from "./Pages/Login";
-import ResetPassword from "./Pages/ResetPassword";
-import ForgotPassword from "./Pages/ForgotPassword";
 import Blog from "./Pages/Blog";
+import Login from "./Pages/Login";
+import ForgotPassword from "./Pages/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword";
+
 
 const App = () => {
   return (
@@ -15,10 +16,10 @@ const App = () => {
       </div>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Blog />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/" element={<Blog />} />
           <Route
             path="/reset-password/:id/:token"
             element={<ResetPassword />}

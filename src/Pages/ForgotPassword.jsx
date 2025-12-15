@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/forgot-password", { email });
+      const response = await api.post("/auth/forgot-password", { email});
       toast.success(response.data.message);
       setError(null);
       navigate("/login");
@@ -20,47 +20,47 @@ const ForgotPassword = () => {
       setError(error.response.data.message);
       toast.error(error.response.data.message);
     }
+
     setEmail("");
   };
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')",
-      }}
-    >
+    <div className="container mx-auto mt-8">
       <form
-        className="max-w-md mx-auto bg-blue-100 p-4"
+        className="max-w-md mx-auto bg-white p-8 shadow-lg"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl mb-4 font-bold font-sans">Forgot Password</h2>
+        <h2 className="text-2xl mb-4 font-bold font-serif text-center">
+          Forgot Password
+        </h2>
         {error && (
-          <div className="bg-red-100 p-3 text-red-600 rounded">{error}</div>
+          <div className="bg-red-100 p-3 mb-4 text-red-600 rounded">
+            {error}
+          </div>
         )}
         <p>
-          <label className="block font-bold mb-2" htmlFor="name">
+          <label className="block font-bold mb-2 font-serif" htmlFor="email">
             Email
           </label>
           <input
-            className="w-full p-2 border border-blue-300 rounded outline-blue-600"
+            className="w-full p-2 border border-gray-300 mb-4 rounded"
             type="email"
             id="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your Email"
+            placeholder="Enter Your Email"
           />
         </p>
+        
         <button
           type="submit"
-          className="w-full mt-3 bg-blue-400 font-bold rounded font-serif text-amber-200 p-2"
+          className="w-full bg-blue-500 text-white rounded font-bold font-serif p-2 text-xl"
         >
-          Submit
+         Submit
         </button>
-        <div className=" p-2 mb-4 text-red-600">
-          Password Remembered? <a href="/Login">Login</a>
+        <div className="bg-red-100 p-2 mb-4 text-red-600 font-bold font-serif rounded mt-4">
+         Password Remembered ? <a href="/login">login</a>
         </div>
       </form>
     </div>
