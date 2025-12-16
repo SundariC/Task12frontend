@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const logout = () => {
     localStorage.removeItem("token");
+    setToken(null);
   };
 
   return (
@@ -25,8 +27,6 @@ export default function Home() {
         <p className="text-gray-700 mb-8">
           Share your thoughts, ideas and stories with the world.
         </p>
-
-        {/* BUTTONS */}
         {token ? (
           <button
             onClick={logout}

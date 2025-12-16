@@ -1,15 +1,21 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://task12backend.onrender.com/api"
+    baseURL: "http://localhost:3000/api"
 });
 
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("token");
-        if(token){
-            config.headers.Authorization = `Bearer ${token}`
-        }
+         if (!config.url.includes("forgot-password") && !config.url.includes("reset-password")) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+        // const token = localStorage.getItem("token");
+        // if(token){
+        //     config.headers.Authorization = `Bearer ${token}`
+        // }
         return config;
     },
     (error) => Promise.reject(error)
