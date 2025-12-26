@@ -22,10 +22,14 @@ const Login = () => {
       toast.success(response.data.message);
       setError(null);
       navigate("/");
-    } catch (error) {
-      setError(error.response.data.message);
-      toast.error(error.response.data.message);
-    }
+    } catch (err) {
+  console.log(err.response?.data); 
+  if (err.response) {
+    console.log(err.response.data);
+  } else {
+    console.log("Network error or Server unreachable");
+  }
+}
 
     setEmail("");
     setPassword("");

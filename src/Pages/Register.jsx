@@ -26,9 +26,12 @@ const Register = () => {
       setError(null);
       navigate("/login");
     } catch (error) {
-      setError(error.response.data.message);
-      toast.error(error.response.data.message);
-    }
+  const msg =
+    error.response?.data?.message || "Something went wrong. Try again";
+
+  setError(msg);
+  toast.error(msg);
+}
 
     setEmail("");
     setPassword("");
